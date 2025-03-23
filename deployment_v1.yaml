@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-v1
+  labels:
+    app: httpd
+    version: v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: httpd
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: httpd
+        version: v1
+    spec:
+      containers:
+      - name: httpd
+        image: crk2020/my-httpd:v1
+        ports:
+        - containerPort: 80
